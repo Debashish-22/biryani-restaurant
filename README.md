@@ -6,9 +6,9 @@ It's a Food(Biryani) ordering and tracking web application which provide interfa
 
 ## Demonstartion 
 
-> [Deployment]()
+> [Deployment](https://biryani-restaurant.herokuapp.com/)
 
-> [video demo link]()
+> [video demo link](https://drive.google.com/file/d/1mXbvIRuhP5uLSHgFG_Nn77hEiFkXNNG6/view?usp=sharing)
 
 ## Tech Stack
 
