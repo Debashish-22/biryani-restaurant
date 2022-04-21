@@ -1,0 +1,35 @@
+<%- include('_navbar')  %> 
+
+<div class="hero-page container-fluid">
+    <div class="row">
+        <div class="col-sm-6 w d-flex flex-column justify-content-center align-items-center">
+            <div>
+                <h1 class="display-1 fw-bold text-red">Biryani</h1>
+                <h2 class="display-5 fw-bold ">It's not just a Food</h2>
+                <h2 class="display-5 fw-bold ">It's an</h2>
+                <h2 class="display-4 fw-bold text-red">Emotion.</h2>
+            </div>
+            <button class="btn mt-4 bg-green br-20"><h5 class="fw-600 mb-0 text-light">Order now!</h5></button>
+        </div>
+       
+        <div class="col-sm-6 hero-page-img d-flex justify-content-center align-items-center">   
+            <img class="img-fluid d-none d-sm-block" src="/images/biryani.png" alt="biryani">   
+        </div>
+    </div>
+</div>
+
+<div id="menu" class="menu-container container">
+    <div class="row">
+
+        <div class="col-12">
+            <h2 class=" fw-bold  text-center">Our <span class="aromatic text-red">Aromatic</span> Menu</h2>
+        </div>
+
+        <div class="food-list my-5 d-flex justify-content-around flex-wrap">
+
+            <% for( food of foods ) { %>
+                <%- include('_food', food)  %>
+            <% } %>
+        </div>
+    </div>
+</div>

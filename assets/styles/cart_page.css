@@ -1,0 +1,25 @@
+.cart-page{
+    margin-top: 100px;
+}
+.bot-border{
+    height: 1.5px;
+    width: 100%;
+    background-color: rgb(0,0,0,0.2);
+}
+.total-text{
+    font-size: 1.5rem;
+}
+.empty-cart img{
+    height : 350px;
+    width: 350px;
+    object-fit: contain;
+}
+/* order page */
+.completed{
+    border-radius: 15px;
+    background-color: rgba(44, 216, 81, 0.5);
+}
+.pending{
+    border-radius: 15px;
+    background-color: rgba(255, 187, 51, 0.4);
+}

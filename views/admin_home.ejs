@@ -1,0 +1,129 @@
+
+<div class="admin-home container">
+    <div class="row">
+        <div class="col text-center my-4">
+            <a href="/admin/upload-dish" class="btn bg-red fw-600 text-light">Upload New Dish</a>
+        </div>  
+    </div>
+
+    <% if (currentOrders.length > 0 || previousOrders.length > 0) { %>
+
+        <% if (currentOrders.length > 0) { %>
+            <div class="current-orders mb-3">
+                <div class="mb-2">
+                    <h4 class="fw-600 text-red mb-2">Current Orders</h4>
+                </div>
+                <div class="current-orders table-responsive br-10">
+                    <table class="table table-hover table-light">
+                        <thead>
+                          <tr>
+                            <th scope="col">Customer Details</th>
+                            <th scope="col">Items</th>
+                            <th scope="col">PlacedAt</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <% for( order of currentOrders ) { %>
+                            
+                                <tr>
+                                    <td>
+                                        <p class="mb-0 fw-600"><%= order.customer.name %> </p>
+                                        <p class="mb-0 text-red">+91 <%= order.customer.phone %> </p>
+                                        <p class="mb-0"><%= order.customer.address %> </p>
+                                    </td>
+                                    <td><% for( item of order.items ) { %>
+                                       <p class="mb-0"><%= item.name %> x <span class="text-red"><%= item.quantity %></span>  </p>
+                                    <% } %></td>
+                                    <td><%= order.orderAt %> </td>
+                                    <td>Rs.<span class="text-red"><%= order.orderTotal %></span></td>
+                                    <td>
+                                        <form action="/admin/update-order" method="post">
+                                            <div class="form-check">
+                                                <input <%= order.orderStatus.order_confirmed ? 'checked' : '' %>  class="form-check-input" type="checkbox" name="order_confirmed" id="Order_confirmed">
+                                                <label class="form-check-label" for="Order_confirmed">
+                                                Order confirmed
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input <%= order.orderStatus.preparing ? 'checked' : '' %> class="form-check-input" type="checkbox" name="preparing" id="preparing">
+                                                <label class="form-check-label" for="preparing">
+                                                preparing
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input <%= order.orderStatus.out_for_delivery ? 'checked' : '' %> class="form-check-input" type="checkbox" name="out_for_delivery" id="out_for_delivery">
+                                                <label class="form-check-label" for="out_for_delivery">
+                                                Out for Delivery
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check mb-1">
+                                                <input <%= order.orderStatus.delivered ? 'checked' : '' %> class="form-check-input" name="delivered" type="checkbox" id="delivered">
+                                                <label class="form-check-label" for="delivered">
+                                                  Delivered
+                                                </label>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <input type="hidden" name="orderId" value=<%= order.id %> >
+                                                <button class="btn bg-red fw-600 text-light br-20 text-center">Update</button>
+                                            </div>
+                                           
+                                        </form>
+                                    </td>
+                                </tr>
+
+                            <% } %>
+                           
+                        </tbody>
+                    </table>
+                </div>
+        
+            </div>
+        <% } %>
+        <% if (previousOrders.length> 0) { %>
+            <div class="previous-orders">
+                <div class="mb-2">
+                    <h4 class="fw-600 text-red">Previous Orders</h4>
+                </div>
+                <div class="previous-orders table-responsive br-10">
+                    <table class="table table-hover table-light">
+                        <thead>
+                          <tr>
+                            <th scope="col">CustomerId</th>
+                            <th scope="col">OrderId</th>
+                            <th scope="col">Items</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">PlacedAt</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <% for( order of previousOrders ) { %>             
+                                <tr>
+                                    <td class="text-success">#<%= order.customer %></td>
+                                    <td class="text-success">#<%= order.id %></td>
+                                    <td><% for( item of order.items ) { %>
+                                       <p class="mb-0"><%= item.name %> x <span class="text-red"><%= item.quantity %></span></p>
+                                    <% } %></td>
+                                    <td>Rs.<span class="text-red"><%= order.orderTotal %></span></td>
+                                    <td><%= order.orderAt %> </td>
+                                </tr>
+                            <% } %>
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <% } %>
+    <% } else { %>
+        <div class="empty-cart d-flex flex-column justify-content-center align-items-center">
+            <img class="img-fluid" src="/images/empty-cart.png" alt="emptyCart">
+        </div>
+    <% } %> 
+</div>

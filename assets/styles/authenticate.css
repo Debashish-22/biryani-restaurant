@@ -1,0 +1,18 @@
+body{
+  background-color: var(--red);
+}
+.login-page, .register-page{
+  margin-top: 100px;
+  background-color: var(--red);
+}
+.login-form, .register-form{
+  border-radius: 15px;
+}
+input:focus, button:focus {
+  border: 1px solid var(--red) !important;
+  box-shadow: none !important;
+}
+.form-check-input:checked {
+  background-color: var(--red) !important;
+  border-color: var(--red) !important;
+}

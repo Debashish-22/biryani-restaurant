@@ -1,0 +1,109 @@
+<link rel="stylesheet" href="/styles/cart_page.css">
+
+<%- include('_navbar')  %> 
+
+<div class="cart-page container">
+    <div class="row">
+
+        <% if (currentOrders.length > 0 || previousOrders.length > 0) { %>
+
+            <% if (currentOrders.length > 0) { %>
+                <div class="current-orders mb-3">
+                    <div class="mb-2">
+                        <h4 class="fw-600 text-red mb-2">Current Orders</h4>
+                    </div>
+                    <% for( order of currentOrders ) { %>
+    
+                        <div class="current-order bg-light p-2 shadow-sm br-10 mb-2">
+                        
+                            <div class="order-info">
+                                <div class="orderId">
+                                    <h6 class="mb-1 ">OrderId: <span class="text-success">#<%= order.id %></span</h6>
+                                </div>
+                                <div class="orderdetails d-flex justify-content-between align-items-center">
+                                    <div class="items">
+                                        <td><% for( item of order.items ) { %>
+                                            <p class="mb-0"><%= item.name %> x <%= item.quantity %>  </p>
+                                        <% } %></td>
+                                    </div>
+                                    <div class="price">
+                                        <h5 class="fw-600 mb-0">Rs.<span class="text-red"><%= order.orderTotal %></span> </h5>
+                                    </div>
+                                </div>
+    
+                                <div class="order-tracking">
+    
+                                    <div class="d-md-flex justify-content-around align-items-center">
+                                        <div class="status text-center mb-3 mb-md-0 p-2 <%= order.orderStatus.order_placed ? "completed" : "pending" %>">
+                                            <img class="" src="/images/placed.png" alt="order placed">
+                                            <h5 class="mb-0">Order Placed</h5>
+                                        </div>
+                                        <div class="status text-center mb-3 mb-md-0 p-2 <%= order.orderStatus.order_confirmed ? "completed" : "pending" %>">
+                                            <img src="/images/confirmed.png" alt="order confirmed">
+                                            <h5 class="mb-0">Order Confirmed</h5>
+                                        </div>
+                                        <div class="status text-center mb-3 mb-md-0 p-2 <%= order.orderStatus.preparing ? "completed" : "pending" %>">
+                                            <img src="/images/preparing.png" alt="preparing ">
+                                            <h5 class="mb-0">Preparing</h5>
+                                        </div>
+                                        <div class="status text-center mb-3 mb-md-0 p-2 <%= order.orderStatus.out_for_delivery ? "completed" : "pending" %>">
+                                            <img src="/images/delivery.png" alt="out for delivery">
+                                            <h5 class="mb-0">Out for delivery</h5>
+                                        </div>
+                                        <div class="status text-center mb-3 mb-md-0 p-2 <%= order.orderStatus.delivered? "completed" : "pending" %>">
+                                            <img src="/images/delivered.png" alt="order delivered">
+                                            <h5 class="mb-0">Delivered!</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                    <% } %>
+                </div>
+            <% } %>
+            <% if (previousOrders.length> 0) { %>
+                <div class="previous-orders">
+                    <div class="mb-2">
+                        <h4 class="fw-600 text-red">Previous Orders</h4>
+                    </div>
+                    <div class="previous-orders table-responsive br-10">
+                        <table class="table table-hover table-light">
+                            <thead>
+                              <tr>
+                                <th scope="col">OrderId</th>
+                                <th scope="col">Items</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">PlacedAt</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <% for( order of previousOrders ) { %>
+                                
+                                    <tr>
+                                        <td class="text-success">#<%= order.id %></td>
+                                        <td><% for( item of order.items ) { %>
+                                           <p class="mb-0"><%= item.name %> x <%= item.quantity %>  </p>
+                                        <% } %></td>
+                                        <td>Rs.<span class="text-red"><%= order.orderTotal %></span></td>
+                                        <td><%= order.orderAt %> </td>
+                                    </tr>
+    
+                                <% } %>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            <% } %>
+        <% } else { %>
+            <div class="empty-cart d-flex flex-column justify-content-center align-items-center">
+                <img class="img-fluid" src="/images/empty-cart.png" alt="emptyCart">
+            </div>
+        <% } %> 
+       
+    </div>
+</div>
+
+

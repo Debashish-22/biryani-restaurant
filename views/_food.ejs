@@ -1,0 +1,13 @@
+<div id="<%= food.id %>" class="card mb-4" style="width: 18rem;">
+    <div class="card-image">
+        <img src="/images/<%=food.imagePath%>" class="card-img-top bg-transparent" alt="biryani">
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-center text-red fw-600 text-capitalize"><%= food.name %> </h5>
+        <p class="card-text"><%= food.description %> </p>
+        <div class="text-center d-flex justify-content-between align-items-center ">
+            <h5 class="mb-0 fw-600">Rs.<%= food.price %> </h5>
+            <button foodId="<%= food.id %> " class="add-to-cart btn bg-green text-light">Add to cart!</>
+        </div>
+    </div>
+</div>

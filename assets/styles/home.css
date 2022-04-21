@@ -1,0 +1,74 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: var(--dark-white);
+}
+nav{
+    background: transparent;
+}
+
+:root{
+    --red: #e22d3f;
+    --green: #41c485;
+    --dark-white: rgb(225, 230, 245);
+    --yellow: #f3b404;
+}
+.hero-page{
+    height: 100vh;
+}
+.w{
+    height: 100vh;
+}
+.text-red{
+    color: var(--red);
+}
+.bg-red{
+    background-color: var(--red);
+}
+.bg-green{
+    background-color:  var(--green);
+}
+.bg-yellow{
+    background-color:  var(--yellow);
+}
+.bg-dark-white{
+    background-color:  var(--dark-white);
+}
+.fw-600{
+    font-weight: 600;
+}
+.br-20{
+    border-radius: 20px;
+}
+.br-10{
+    border-radius: 10px;
+}
+.aromatic{
+    font-size: 2.8rem;
+}
+.card{
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.card:hover{
+    transition: 0.3s;
+    transform: scale(1.01);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.card-image img{
+    height: 200px;
+    object-fit: contain;
+  
+}
+.card-image{
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+/* admin empty, error page */
+.empty-cart img{
+    height : 350px;
+    width: 350px;
+    object-fit: contain;
+}
